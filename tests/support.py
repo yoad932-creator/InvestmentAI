@@ -7,6 +7,16 @@ from investment_ai.domain.bars import DailyBar
 from investment_ai.domain.provenance import Provenance
 
 
+class FrozenClock:
+    """Injected UTC clock; never reads the computer's time or timezone."""
+
+    def __init__(self, instant):
+        self.instant = instant
+
+    def now(self):
+        return self.instant
+
+
 def provenance(**changes):
     values = dict(
         provider="fixture", payload_hash="a" * 64, source_revision="revision-1",
