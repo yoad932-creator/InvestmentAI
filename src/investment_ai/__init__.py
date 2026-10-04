@@ -1,0 +1,1 @@
+"""InvestmentAI local research package."""

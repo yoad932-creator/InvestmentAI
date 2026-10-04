@@ -1,0 +1,29 @@
+mode = "swing"
+timeframe = "1d"
+benchmark = "SPY"
+horizons = [5, 10, 20]
+primary_horizon = 10
+bootstrap_history_days = 550
+universe = [
+    "AAPL", "MSFT", "AMZN", "GOOGL", "META", "NVDA", "JPM", "BAC",
+    "WFC", "GS", "V", "MA", "XOM", "CVX", "JNJ", "PG", "KO", "PEP",
+    "WMT", "HD",
+]
+
+# Provisional research policy, applied automatically to every candidate.
+[liquidity]
+window = 20
+min_average_dollars = "20000000"
+# Omit min_average_shares to disable the separate share-volume floor.
+daily_dollar_floor = "10000000"
+min_passing_fraction = 0.80
+max_day_fraction = 0.20
+version = "swing-daily-v1"
+
+[provider]
+base_url = "https://api.massive.com"
+history_years = 2
+request_interval_seconds = 13.0
+attempts = 4
+ready_hour_et = 8
+

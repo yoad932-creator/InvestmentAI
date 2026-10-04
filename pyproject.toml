@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "investment-ai"
+version = "0.1.0"
+description = "Local Swing research data pipeline"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "httpx==0.28.1",
+    "python-dotenv==1.2.4",
+    "exchange-calendars==4.13.2",
+    "tzdata==2026.5",
+]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1", "pytest-socket==0.8.1"]
+
+[project.scripts]
+investment-ai = "investment_ai.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "--disable-socket"
+
